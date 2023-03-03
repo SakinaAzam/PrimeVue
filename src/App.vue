@@ -1,26 +1,38 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+<script setup>
+import { useToast } from "primevue/usetoast";
+import {ref} from 'vue'
+const toast = useToast();
+const text = ref(); 
+const greet = () =>{
+ toast.add({severity:'success', summary:'PrimeTime'  , detail:text.value})
 }
+
 </script>
 
+
+
+
+
+
+<template>
+<div class="container">
+ <Toast></Toast> 
+ <span class="p-float-label  p-input-filled">
+	<InputText id="txt" type="text" v-model="text" />
+	<label for="txt">Text</label>
+</span>
+<Button label="Greet" @click="greet" icon="pi pi-user" > </Button>
+</div>
+
+</template>
+
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container{
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
 }
 </style>
