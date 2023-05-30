@@ -1,38 +1,44 @@
 
 <script setup>
+import { ref } from "vue";
 import { useToast } from "primevue/usetoast";
-import {ref} from 'vue'
+
+const text = ref();
 const toast = useToast();
-const text = ref(); 
-const greet = () =>{
- toast.add({severity:'success', summary:'PrimeTime'  , detail:text.value})
-}
-
+const greet = () => {
+	toast.add({
+		severity: "success",
+		summary: "Message",
+		detail: text.value,
+	});
+};
 </script>
-
-
-
-
 
 
 <template>
 <div class="container">
- <Toast></Toast> 
+ <AppToast></AppToast> 
  <span class="p-float-label  p-input-filled">
 	<InputText id="txt" type="text" v-model="text" />
 	<label for="txt">Text</label>
 </span>
-<Button label="Greet" @click="greet" icon="pi pi-user" > </Button>
+<CustomButton label="Greet" @click="greet" icon="pi pi-user"></CustomButton>
+
 </div>
 
 </template>
 
 
 <style>
-.container{
-display: flex;
-align-items: center;
-justify-content: center;
-min-height: 100vh;
-}
+ html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+ .container{
+	
+	display: flex;
+ }
 </style>
